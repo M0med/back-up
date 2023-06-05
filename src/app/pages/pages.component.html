@@ -1,0 +1,74 @@
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="ip_src">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> IP Source </th>
+        <td mat-cell *matCellDef="let row"> {{row.ip_src}}</td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="ip_dst">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> IP Destination </th>
+        <td mat-cell *matCellDef="let row"> {{row.ip_dst}} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="mac_src">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MAC Source </th>
+        <td mat-cell *matCellDef="let row"> {{row.mac_src}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="mac_dst">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MAC Destination </th>
+        <td mat-cell *matCellDef="let row"> {{row.mac_dst}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="protocol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Protocol </th>
+        <td mat-cell *matCellDef="let row"> {{row.protocol}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="sport">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Source Port </th>
+        <td mat-cell *matCellDef="let row"> {{row.sport}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="dport">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination Port </th>
+        <td mat-cell *matCellDef="let row"> {{row.dport}} </td>
+      </ng-container>
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+  
+  
+  
+  <!-- Copyright 2023 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at https://angular.io/license -->
